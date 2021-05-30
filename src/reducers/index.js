@@ -33,10 +33,10 @@ state = [
   {id:1, title: "講義開催のお知らせ", body: "明日の講義はおやすみです"}
 ];
 */
-
+import { CREATE_EVENT, DELETE_EVENT, DELETE_ALL_EVENTS } from '../actions';
 const events = (state = [], action) => {
   switch (action.type) {
-    case 'CREATE_EVENT':
+    case CREATE_EVENT:
       const event = { title: action.title, body: action.body };
       const length = state.length;
       /*
@@ -52,9 +52,9 @@ const events = (state = [], action) => {
 
       // id: idはidが同じなのでショーハンドで記述ができる
       return [...state, { id, ...event }];
-    case 'DELETE_EVENT':
+    case DELETE_EVENT:
       return state.filter((event) => event.id !== action.id);
-    case 'DELETE_ALL_EVENTS':
+    case DELETE_ALL_EVENTS:
       return [];
 
     default:
